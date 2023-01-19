@@ -56,5 +56,5 @@
 /vbmeta_image  emmc     /dev/block/bootdevice/by-name/vbmeta                    flags=display="VBMeta";backup=0;advbackup=1;flashimg=1
 
 # Removable storage
-/usb_otg        auto     /dev/block/sda1              /dev/block/sda            flags=fsflags=utf8;display="USB OTG";storage;wipeingui;removable;fsflags="utf8"
-/external_sd    auto     /dev/block/mmcblk1p1         /dev/block/mmcblk1        flags=fsflags=utf8;display="SD Card";storage;wipeingui;removable;fsflags="utf8"
+/usb_otg        auto     /dev/block/sda1              /dev/block/sda4            flags=fsflags=utf8;display="USB OTG";storage;wipeingui;removable;fsflags="utf8"
+/external_sd    auto     /dev/block/mmcblk1p1         /dev/block/mmcblk1p4        flags=fsflags=utf8;display="SD Card";storage;wipeingui;removable;fsflags="utf8"
