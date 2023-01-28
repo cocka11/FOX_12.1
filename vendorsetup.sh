@@ -96,11 +96,12 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
 
 	# OTA & MIUI
+	# vanilla build
+	export OF_VANILLA_BUILD=1
 	export OF_KEEP_DM_VERITY_FORCED_ENCRYPTION=1
-	export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
-	export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
-	export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
-	export OF_NO_MIUI_PATCH_WARNING=1
+	# dispense with the entire OTA menu
+	export OF_DISABLE_OTA_MENU=1
+
 
 	# screen settings
 	export OF_SCREEN_H=2280
