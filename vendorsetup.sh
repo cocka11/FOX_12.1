@@ -37,7 +37,6 @@ fi
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export LC_ALL="C"
 	export ALLOW_MISSING_DEPENDENCIES=true
-	export OF_TARGET_DEVICES=onclite
 	export TARGET_DEVICE_ALT=onclite,onc
 
 	#Language
@@ -57,6 +56,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_ZIP_BINARY=1
 	export FOX_USE_SED_BINARY=1
 	export FOX_USE_XZ_UTILS=1
+	export FOX_ENABLE_APP_MANAGER=1
 	export FOX_REPLACE_BUSYBOX_PS=1
 
 	export FOX_BUGGED_AOSP_ARB_WORKAROUND="1616300800"; # Sun 21 Mar 04:26:40 GMT 2021
@@ -66,9 +66,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_DELETE_INITD_ADDON=1 # !- Causes bootloops sometimes -!
 	export FOX_DELETE_AROMAFM=1
 
-	# LZMA compression - this is needed!
-	export FOX_USE_LZMA_COMPRESSION=1
-
 	#Magiskboot
 	export OF_USE_MAGISKBOOT=1
 	export OF_USE_NEW_MAGISKBOOT=1
@@ -76,7 +73,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
 	# OTA & MIUI
 	# vanilla build
-	export OF_VANILLA_BUILD=1
+	export FOX_VANILLA_BUILD=1
 	export OF_KEEP_DM_VERITY_FORCED_ENCRYPTION=1
 	# dispense with the entire OTA menu
 	export OF_DISABLE_OTA_MENU=1
