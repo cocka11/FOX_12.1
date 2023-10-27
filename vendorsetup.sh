@@ -96,7 +96,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_BUILD_TYPE="Beta"
 	export FOX_VERSION=R11.1_2
 	export OF_MAINTAINER=melles1991
-	export OF_USE_TWRP_SAR_DETECT=1
+	export OF_FBE_METADATA_MOUNT_IGNORE=1
 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
