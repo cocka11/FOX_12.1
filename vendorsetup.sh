@@ -42,7 +42,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	#Language
 	export TW_DEFAULT_LANGUAGE="en"
 
-
 	# Fox-specific flags
 	export OF_USE_GREEN_LED=0
 	export FOX_RESET_SETTINGS=1
@@ -66,6 +65,9 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_DELETE_INITD_ADDON=1 # !- Causes bootloops sometimes -!
 	export FOX_DELETE_AROMAFM=1
 
+	# LZMA compression - this is needed!
+	export OF_USE_LZMA_COMPRESSION=1
+
 	#Magiskboot
 	export OF_USE_MAGISKBOOT=1
 	export OF_USE_NEW_MAGISKBOOT=1
@@ -78,7 +80,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	# dispense with the entire OTA menu
 	export OF_DISABLE_OTA_MENU=1
 
-
 	# screen settings
 	export OF_SCREEN_H=2280
 	export OF_STATUS_H=80
@@ -90,7 +91,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_R11=1
 	export OF_QUICK_BACKUP_LIST="/boot;/dtbo;/data;/system_image;/vendor_image;"
 	# -- end R11 settings --
-
 
 	# Redmi 7/Y3 specific
 	export FOX_BUILD_TYPE="Beta"
