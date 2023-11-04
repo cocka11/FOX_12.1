@@ -57,9 +57,14 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_USE_XZ_UTILS=1
 	export FOX_ENABLE_APP_MANAGER=1
 	export FOX_REPLACE_BUSYBOX_PS=1
+	export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
+	export FOX_REPLACE_TOOLBOX_GETPROP=1
+	export OF_FBE_METADATA_MOUNT_IGNORE=1
 
 	export FOX_BUGGED_AOSP_ARB_WORKAROUND="1616300800"; # Sun 21 Mar 04:26:40 GMT 2021
 	export OF_USE_SYSTEM_FINGERPRINT=1
+	# run a process after formatting data to recreate /data/media/0 (only when forced-encryption is being disabled)
+	export OF_RUN_POST_FORMAT_PROCESS=1
 
 	#Addons
 	export FOX_DELETE_INITD_ADDON=1 # !- Causes bootloops sometimes -!
@@ -76,9 +81,14 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	# OTA & MIUI
 	# vanilla build
 	export FOX_VANILLA_BUILD=1
+	export OF_KEEP_DM_VERITY=1
+	export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
+	export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
 	export OF_KEEP_DM_VERITY_FORCED_ENCRYPTION=1
-	# dispense with the entire OTA menu
+	 # dispense with the entire OTA menu
 	export OF_DISABLE_OTA_MENU=1
+	# OTA for custom ROMs
+	export OF_SUPPORT_ALL_PAYLOAD_OTA_UPDATES=1
 
 	# screen settings
 	export OF_SCREEN_H=2280
@@ -89,6 +99,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 
     # -- add settings for R11 --
 	export FOX_R11=1
+	export OF_SKIP_MULTIUSER_FOLDERS_BACKUP=0
 	export OF_QUICK_BACKUP_LIST="/boot;/dtbo;/data;/system_image;/vendor_image;"
 	# -- end R11 settings --
 
@@ -96,7 +107,6 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_BUILD_TYPE="Beta"
 	export FOX_VERSION=R11.1_2
 	export OF_MAINTAINER=melles1991
-	export OF_FBE_METADATA_MOUNT_IGNORE=1
 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
