@@ -108,6 +108,29 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export FOX_VERSION=R11.1_2
 	export OF_MAINTAINER=melles1991
 
+        # Magisk
+	function download_magisk(){
+		# Usage: download_magisk <destination_path>
+		local DEST=$1
+		if [ -n "${DEST}" ]; then
+			if [ ! -e ${DEST} ]; then
+				echo "Downloading the Latest Release of Magisk..."
+				local LATEST_MAGISK_URL=$(curl -sL https://api.github.com/repos/topjohnwu/Magisk/releases/latest | grep "browser_download_url" | grep ".apk" | cut -d : -f 2,3 | tr -d '"')
+				mkdir -p $(dirname ${DEST})
+				wget -q ${LATEST_MAGISK_URL} -O ${DEST} || wget ${LATEST_MAGISK_URL} -O ${DEST}
+				local RCODE=$?
+				if [ "$RCODE" = "0" ]; then
+					echo "Successfully Downloaded Magisk to ${DEST}!"
+					echo "Done!"
+				else
+					echo "Failed to Download Magisk to ${DEST}!"
+				fi
+			fi
+		fi
+	}
+	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/Magisk/Magisk.zip
+	download_magisk $FOX_USE_SPECIFIC_MAGISK_ZIP
+ 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
   	   export | grep "FOX" >> $FOX_BUILD_LOG_FILE
