@@ -106,7 +106,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	# Redmi 7/Y3 specific
 	export FOX_BUILD_TYPE="Beta"
 	export FOX_VERSION=R11.1_2
-	export OF_MAINTAINER=melles1991
+	export OF_MAINTAINER=cocka11
 
         # Magisk
 	function download_magisk(){
