@@ -67,7 +67,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_RUN_POST_FORMAT_PROCESS=1
 
 	#Addons
-	export FOX_DELETE_INITD_ADDON=1 # !- Causes bootloops sometimes -!
+	export FOX_DELETE_INITD_ADDON=0 # !- Causes bootloops sometimes -!
 	export FOX_DELETE_AROMAFM=1
 
 	# LZMA compression - this is needed!
