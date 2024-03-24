@@ -26,7 +26,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-service arbri /system/bin/arbri.sh
+on property:sys.boot_completed=1
+    exec_background u:r:magisk:s0 -- /system/bin/arbri.sh
     user root
     group root
     oneshot
