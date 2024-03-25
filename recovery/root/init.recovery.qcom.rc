@@ -26,14 +26,15 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-on property:sys.boot_completed=1
-    exec_background u:r:magisk:s0 -- /system/bin/arbri.sh
-    user root
-    group root
-    oneshot
-
 import /init.recovery.device.rc
 import /init.recovery.qcom_decrypt.rc
+
+service arbri /system/bin/arbri.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
 
 on init
     exec u:r:recovery:s0 -- /system/bin/resetprop ro.boot.verifiedbootstate orange
@@ -59,3 +60,7 @@ on boot
     write /sys/bus/cpu/devices/cpu5/online 0
     write /sys/bus/cpu/devices/cpu6/online 0
     write /sys/bus/cpu/devices/cpu7/online 0
+
+on boot
+    chmod 0777 /system/bin/arbri.sh
+    start arbri
